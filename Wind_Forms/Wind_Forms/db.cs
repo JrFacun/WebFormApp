@@ -12,7 +12,7 @@ namespace Wind_Forms
 {
     internal class db
     {
-        public SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        public SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=web;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         SqlCommand cmd = new SqlCommand();
         SqlDataReader dr;
 
@@ -20,7 +20,7 @@ namespace Wind_Forms
         {
             cmd.Connection = conn; 
             
-            SqlCommand cmdCheckId = new SqlCommand("select * from tblregister where id = '" + txtid.Text + "'", conn);
+            SqlCommand cmdCheckId = new SqlCommand("select * from tblUser where id = '" + txtid.Text + "'", conn);
             SqlDataAdapter da = new SqlDataAdapter(cmdCheckId);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -66,8 +66,8 @@ namespace Wind_Forms
                     while (dr.Read())
                     {
                         ListViewItem item = new ListViewItem(dr["Id"].ToString());
-                        item.SubItems.Add(dr["email"].ToString());
-                        item.SubItems.Add(dr["password"].ToString());
+                        item.SubItems.Add(dr["Email"].ToString());
+                        item.SubItems.Add(dr["Password"].ToString());
                         lv.Items.Add(item); 
                     }
                 }

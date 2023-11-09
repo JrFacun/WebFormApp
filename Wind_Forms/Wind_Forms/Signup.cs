@@ -31,7 +31,7 @@ namespace Wind_Forms
 
         private void Signup_Load(object sender, EventArgs e)
         {
-            data.load_data("SELECT * FROM tblregister", listView1);
+            data.load_data("SELECT * FROM tblUser", listView1);
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -46,8 +46,8 @@ namespace Wind_Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string qryCreate = "INSERT into tblregister values('" + txtUsername.Text + "', '" + txtPassword.Text + "')"; 
-            string qryUpdate = "UPDATE tblregister set email = '" + txtUsername.Text + "', password = '" + txtPassword.Text + "' WHERE id = '" + txtId.Text +"'";
+            string qryCreate = "INSERT into tblUser values('" + txtUsername.Text + "', '" + txtPassword.Text + "')"; 
+            string qryUpdate = "UPDATE tblUser set Email = '" + txtUsername.Text + "', Password = '" + txtPassword.Text + "' WHERE id = '" + txtId.Text +"'";
             data.saveData(qryCreate, qryUpdate, txtId);
             data.load_data("SELECT * from tblregister", listView1);
             txtId.Clear();
@@ -61,22 +61,27 @@ namespace Wind_Forms
 
             if (txtSearch.Text != "")
             {
-                string srch = "SELECT * from tblregister WHERE Id LIKE '%" + txtSearch.Text + "%'";
+                string srch = "SELECT * from tblUser WHERE Id LIKE '%" + txtSearch.Text + "%'";
                 data.load_data(srch, listView1);
             }
             else
             {
-                data.load_data("SELECT * FROM tblregister", listView1);
+                data.load_data("SELECT * FROM tblUser", listView1);
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            data.delete("DELETE FROM tblregister WHERE ID = " + txtId.Text);
-            data.load_data("SELECT * FROM tblregister", listView1);
+            data.delete("DELETE FROM tblUser WHERE ID = " + txtId.Text);
+            data.load_data("SELECT * FROM tblUser", listView1);
             txtId.Clear();
             txtUsername.Clear();
             txtPassword.Clear();
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

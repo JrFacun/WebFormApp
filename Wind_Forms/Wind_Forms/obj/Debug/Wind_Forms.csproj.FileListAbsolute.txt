@@ -23,3 +23,15 @@ C:\Users\NUB Complab 306-PC40\Desktop\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms
 C:\Users\NUB Complab 306-PC40\Desktop\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.csproj.CoreCompileInputs.cache
 C:\Users\NUB Complab 306-PC40\Desktop\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.exe
 C:\Users\NUB Complab 306-PC40\Desktop\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.pdb
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\bin\Debug\Wind_Forms.exe.config
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\bin\Debug\Wind_Forms.exe
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\bin\Debug\Wind_Forms.pdb
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.csproj.AssemblyReference.cache
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.Form1.resources
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.Login.resources
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.Properties.Resources.resources
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.Signup.resources
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.csproj.GenerateResource.cache
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.exe
+C:\Users\User\Source\Repos\JrFacun\WebFormApp\Wind_Forms\Wind_Forms\obj\Debug\Wind_Forms.pdb
