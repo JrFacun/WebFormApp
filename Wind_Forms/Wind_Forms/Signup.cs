@@ -46,10 +46,10 @@ namespace Wind_Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string qryCreate = "INSERT into tblUser values('" + txtUsername.Text + "', '" + txtPassword.Text + "')"; 
-            string qryUpdate = "UPDATE tblUser set Email = '" + txtUsername.Text + "', Password = '" + txtPassword.Text + "' WHERE id = '" + txtId.Text +"'";
+            string qryCreate = "INSERT INTO tblUser (Username, Password) VALUES ('" + txtUsername.Text + "', '" + txtPassword.Text + "')";
+            string qryUpdate = "UPDATE tblUser set Username = '" + txtUsername.Text + "', Password = '" + txtPassword.Text + "' WHERE id = '" + txtId.Text +"'";
             data.saveData(qryCreate, qryUpdate, txtId);
-            data.load_data("SELECT * from tblregister", listView1);
+            data.load_data("SELECT * from tblUser", listView1);
             txtId.Clear();
             txtUsername.Clear();
             txtPassword.Clear();

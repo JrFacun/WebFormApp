@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Wind_Forms
 {
+
     internal class db
     {
         public SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=web;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         SqlCommand cmd = new SqlCommand();
         SqlDataReader dr;
+        public string id, type, username, password;
 
         public void saveData(string sqlcreate, string sqlupdate, TextBox txtid)
         {
@@ -66,7 +69,7 @@ namespace Wind_Forms
                     while (dr.Read())
                     {
                         ListViewItem item = new ListViewItem(dr["Id"].ToString());
-                        item.SubItems.Add(dr["Email"].ToString());
+                        item.SubItems.Add(dr["Username"].ToString());
                         item.SubItems.Add(dr["Password"].ToString());
                         lv.Items.Add(item); 
                     }
@@ -85,6 +88,21 @@ namespace Wind_Forms
             dele.ExecuteNonQuery();
             conn.Close( );
             MessageBox.Show("Record Deleted");
+        }
+        public bool VerifyLogin(string username, string password)
+        {
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM tblUser WHERE Username = @Username AND Password = @Password", conn);
+            cmd.Parameters.AddWithValue("@Username", username);
+            cmd.Parameters.AddWithValue("@Password", password);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            bool isValidUser = dr.HasRows;
+
+            dr.Close();
+            conn.Close();
+            return isValidUser;
         }
     }
 }
