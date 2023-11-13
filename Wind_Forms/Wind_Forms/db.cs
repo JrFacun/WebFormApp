@@ -21,20 +21,24 @@ namespace Wind_Forms
 
         public void saveData(string sqlcreate, string sqlupdate, TextBox txtid)
         {
-            cmd.Connection = conn; 
-            
+            // Initialize a command object with the database connection
+            cmd.Connection = conn;
+
+            // Create a SqlCommand to check if a record with the provided ID exists in the 'tblUser' table
             SqlCommand cmdCheckId = new SqlCommand("select * from tblUser where id = '" + txtid.Text + "'", conn);
             SqlDataAdapter da = new SqlDataAdapter(cmdCheckId);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            if(dt.Rows.Count > 0)
+
+            // Check if any records match the provided ID
+            if (dt.Rows.Count > 0)
             {
                 conn.Open();
                 SqlCommand cmd1 = conn.CreateCommand();
-                cmd1.CommandType = CommandType.Text;    
-                cmd1.CommandText = sqlupdate;
+                cmd1.CommandType = CommandType.Text;
+                cmd1.CommandText = sqlupdate; // SQL command for updating a record
 
-                cmd1.ExecuteNonQuery();
+                cmd1.ExecuteNonQuery(); // Execute the SQL update command
                 conn.Close();
                 MessageBox.Show("Record Updated");
             }
@@ -43,44 +47,50 @@ namespace Wind_Forms
                 conn.Open();
                 SqlCommand cmd2 = conn.CreateCommand();
                 cmd2.CommandType = CommandType.Text;
-                cmd2.CommandText = sqlcreate;
-                cmd2.ExecuteNonQuery();
+                cmd2.CommandText = sqlcreate; // SQL command for creating a new record
+
+                cmd2.ExecuteNonQuery(); // Execute the SQL create command
                 conn.Close();
-
                 MessageBox.Show("Record Added");
-
             }
 
             conn.Close();
-
         }
 
-        public void load_data(string q, ListView lv) {
-            lv.Items .Clear();
+        public void load_data(string q, ListView lv)
+        {
+            lv.Items.Clear();
             try
             {
                 SqlDataReader dr;
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = q;
+                cmd.CommandText = q; // The 'q' parameter contains the SQL query
+
                 conn.Open();
                 dr = cmd.ExecuteReader();
+
+                // Check if there are rows returned by the query
                 if (dr.HasRows)
                 {
                     while (dr.Read())
                     {
+                        // Create a ListViewItem to display the retrieved data in a ListView
                         ListViewItem item = new ListViewItem(dr["Id"].ToString());
                         item.SubItems.Add(dr["Username"].ToString());
                         item.SubItems.Add(dr["Password"].ToString());
-                        lv.Items.Add(item); 
+                        lv.Items.Add(item); // Add the ListViewItem to the ListView
                     }
                 }
+
                 dr.Close();
                 conn.Close();
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message.ToString());
             }
         }
+
         public void delete(string del)
         {
             conn.Open();
@@ -91,18 +101,24 @@ namespace Wind_Forms
         }
         public bool VerifyLogin(string username, string password)
         {
-            conn.Open();
+            conn.Open(); // Open the database connection
+
+            // Create a SqlCommand to check if a user with the provided username and password exists in the 'tblUser' table
             SqlCommand cmd = new SqlCommand("SELECT * FROM tblUser WHERE Username = @Username AND Password = @Password", conn);
+
+            // Add parameters to the SqlCommand to prevent SQL injection
             cmd.Parameters.AddWithValue("@Username", username);
             cmd.Parameters.AddWithValue("@Password", password);
 
+            // Execute the SQL query and retrieve data
             SqlDataReader dr = cmd.ExecuteReader();
 
+            // Check if the SqlDataReader has rows, indicating a valid user
             bool isValidUser = dr.HasRows;
 
-            dr.Close();
-            conn.Close();
-            return isValidUser;
+            dr.Close(); // Close the SqlDataReader
+            conn.Close(); // Close the database connection
+            return isValidUser; // Return whether the user is valid (true) or not (false)
         }
     }
 }
