@@ -61,7 +61,10 @@ namespace Wind_Forms
 
             if (txtSearch.Text != "")
             {
-                string srch = "SELECT * from tblUser WHERE Id LIKE '%" + txtSearch.Text + "%'";
+                string srch = "SELECT * FROM tblUser WHERE Id LIKE '%" + txtSearch.Text +
+                  "%' OR Username LIKE '%" + txtSearch.Text + "%'" +
+                  " OR Password LIKE '%" + txtSearch.Text + "%'" +
+                  " OR Email LIKE '%" + txtSearch.Text + "%'";
                 data.load_data(srch, listView1);
             }
             else
